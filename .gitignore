@@ -48,3 +48,6 @@ ipch/
 [Dd]ebug*/
 [Rr]elease*/
 Ankh.NoLoad
+
+# vim Temp Files
+*~
