@@ -42,7 +42,7 @@ TYPE* List<TYPE>::GetElement(const Iterator<TYPE>& _Iter) const
 template <class TYPE>
 int List<TYPE>::GetNbElements() const
 { 
-
+	return nbElements;
 }
 
 template <class TYPE>
