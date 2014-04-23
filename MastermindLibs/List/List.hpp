@@ -3,6 +3,8 @@
 template <class TYPE>
 List<TYPE>::List()
 {
+	first = NULL;
+	last = NULL;
 }
 
 //Destructeur
@@ -46,6 +48,14 @@ int List<TYPE>::GetNbElements() const
 template <class TYPE>
 bool List<TYPE>::IsEmpty() const
 {
+	if (first = NULL)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
  
 } 
 
