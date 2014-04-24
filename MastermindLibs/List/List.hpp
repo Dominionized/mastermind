@@ -17,20 +17,19 @@ List<TYPE>::~List()
 template <class TYPE>
 void List<TYPE>::PushBack(TYPE* _element)
 {
+	Cell<TYPE>* newCell = new Cell<TYPE>(_element, last, NULL);
+
 	if (isEmpty())
 	{
-		first = _element;
-		last = _element;
-
-		first->Next = NULL;
-		first->`Previous = NULL;
+		first = newCell;
+		last = newCell;
 	}
 	else
 	{
-		TYPE* ptrSecondLast = last;
-		last = _element;
-		ptrSecondLast->Next = _element;
-		last->Previous = ptrSecondLast;
+		Cell<TYPE>* ptrSecondLastCell = last;
+		last = newCell;
+		ptrSecondLastCell->Next = newCell;
+		last->Previous = ptrSecondLastCell;
 	}
 }
 template <class TYPE>
@@ -40,6 +39,22 @@ void List<TYPE>::Insert(TYPE* _Element, Iterator<TYPE>& _Iter)
     //Ne supporte pas l'ajout dans une liste vide.
     //2 cas 1)Insertion au début 
     //      2)Insertion entre premier et dernier 
+
+	switch (_Iter->GetCurrent())
+	{
+	case last:
+		throw("Impossible d'ajouter a la fin.");
+		break;
+	case first:
+		TYPE* ptrSecondCell = first;
+		first = _Element;
+		ptrSecondCell->Previous = first;
+		first->Next = ptrSecondCell;
+		break;
+	case default:
+		TYPE* ptrPreviousElement = _Iter->GetCurrent()->Previ
+	}
+
 } 
 
 template <class TYPE>
