@@ -52,7 +52,10 @@ void List<TYPE>::Insert(TYPE* _Element, Iterator<TYPE>& _Iter)
 		first->Next = ptrSecondCell;
 		break;
 	case default:
-		TYPE* ptrPreviousElement = _Iter->GetCurrent()->Previ
+		Cell<TYPE> newCell = new Cell<TYPE>(_Element, _Iter->GetCurrent()->Previous, _Iter->GetCurrent());
+		_Iter->GetCurrent()->Previous->Next = newCell;
+		_Iter->GetCurrent()->Previous = newCell;
+		break;
 	}
 
 } 
