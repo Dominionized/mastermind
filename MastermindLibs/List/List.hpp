@@ -17,6 +17,10 @@ List<TYPE>::~List()
 template <class TYPE>
 void List<TYPE>::PushBack(TYPE* _element)
 {
+	if (isEmpty())
+	{
+
+	}
 }
 template <class TYPE>
 void List<TYPE>::Insert(TYPE* _Element, Iterator<TYPE>& _Iter)
