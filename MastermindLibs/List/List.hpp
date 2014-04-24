@@ -27,8 +27,10 @@ void List<TYPE>::PushBack(TYPE* _element)
 	}
 	else
 	{
-		last->Next = _element;
+		TYPE* ptrSecondLast = last;
 		last = _element;
+		ptrSecondLast->Next = _element;
+		last->Previous = ptrSecondLast;
 	}
 }
 template <class TYPE>
