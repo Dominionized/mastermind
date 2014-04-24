@@ -19,7 +19,16 @@ void List<TYPE>::PushBack(TYPE* _element)
 {
 	if (isEmpty())
 	{
+		first = _element;
+		last = _element;
 
+		first->Next = NULL;
+		first->`Previous = NULL;
+	}
+	else
+	{
+		last->Next = _element;
+		last = _element;
 	}
 }
 template <class TYPE>
