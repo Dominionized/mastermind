@@ -1,5 +1,6 @@
 #pragma once
 #include "List.h"
+
 class TestList
 {
 public:
@@ -7,5 +8,6 @@ public:
     ~TestList(void);
 
     void RunAllTests();
+	void testPushBack();
 };
 
