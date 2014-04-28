@@ -94,6 +94,14 @@ template <class TYPE>
 void List<TYPE>::Clear()
 {
 
+	// On commence au 2e et on supprime le précédent à chaque fois
+	Cell<TYPE>* ptrCurrentCell = first->Next;
+
+	while (ptrCurrentCell != NULL)
+	{
+		delete ptrCurrentCell->Previous;
+		ptrCurrentCell = PtrCurrentCell->Next;
+	}
 }
 
 //Méthodes déjà implémentées
