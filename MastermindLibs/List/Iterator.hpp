@@ -1,3 +1,11 @@
+/** @file List.hpp
+Fichier contenant les methodes de la classe Iterator.
+
+@author Dominique Begin
+@author Olivier Therrien-Lefebvre
+@date	30 janvier 2014
+
+*/
 
 template <class TYPE>
 Iterator<TYPE>::Iterator(void)

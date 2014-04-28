@@ -57,7 +57,7 @@ public:
 
 private:
 
-    List(const List&); //copieur désativé
+    List(const List&); //copieur désactivé
     const List& operator=(const List<TYPE>&); //affectateur désactivé
     
     //Attributs

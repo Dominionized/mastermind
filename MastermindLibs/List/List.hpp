@@ -1,5 +1,14 @@
+/** @file List.hpp
+	Fichier contenant les methodes de la classe List.
 
-//Constructeur
+	@author Dominique Begin
+	@author Olivier Therrien-Lefebvre
+	@date	30 janvier 2014
+
+*/
+/**
+	Constructeur de List. Instantie le premier et le dernier noeud à NULL
+*/
 template <class TYPE>
 List<TYPE>::List()
 {
@@ -7,13 +16,18 @@ List<TYPE>::List()
 	last = NULL;
 }
 
-//Destructeur
+/**
+	Destructeur de List.
+*/
 template <class TYPE>
 List<TYPE>::~List()
 {
+	Clear();
 }
-
-//Insert à la fin de liste (supporte l'ajout dans une liste vide)
+/**
+	Insertion d'une cellule à la fin de liste (supporte l'ajout dans une liste vide)
+	@param[in] _element L'element que contiendra la nouvelle cellule.
+*/
 template <class TYPE>
 void List<TYPE>::PushBack(TYPE* _element)
 {
@@ -32,9 +46,16 @@ void List<TYPE>::PushBack(TYPE* _element)
 		last->Previous = ptrSecondLastCell;
 	}
 }
+
+/**
+	Insertion d'une cellule avant la cellule referencee par l'iterateur
+	@param[in] _Element L'element que contiendra la nouvelle cellule.
+	@param[in] _Iter L'iterateur referencant la cellule.
+*/
 template <class TYPE>
 void List<TYPE>::Insert(TYPE* _Element, Iterator<TYPE>& _Iter)
 {
+
     //Insert avant la position courante (limite: impossible d'ajouter à la fin!)
     //Ne supporte pas l'ajout dans une liste vide.
     //2 cas 1)Insertion au début 
@@ -58,6 +79,10 @@ void List<TYPE>::Insert(TYPE* _Element, Iterator<TYPE>& _Iter)
 
 } 
 
+/**
+Suppression d'une cellule referencee par l'iterateur
+@param[in] _Iter L'iterateur referencant la cellule a supprimer.
+*/
 template <class TYPE>
 void List<TYPE>::Erase(Iterator<TYPE>& _Iter)
 {
@@ -96,18 +121,31 @@ void List<TYPE>::Erase(Iterator<TYPE>& _Iter)
 	}
 }
 
+/**
+Retourne l'element de la cellule referencee par l'iterateur
+@param[in] _Iter L'iterateur referencant la cellule pour laquelle retourner la valeur.
+@return L'element de la cellule referencee par l'iterateur
+*/
 template <class TYPE>
 TYPE* List<TYPE>::GetElement(const Iterator<TYPE>& _Iter) const
 {
 	return &(_Iter->GetCurrentElement);
 }
 
+/**
+Retourne le nombre d'elements de la liste.
+@return Le nombre d'elements de la liste
+*/
 template <class TYPE>
 int List<TYPE>::GetNbElements() const
 { 
 	return nbElements;
 }
 
+/**
+Retourne si la liste est vide ou non
+@return Un bool disant si la liste est vide ou non
+*/
 template <class TYPE>
 bool List<TYPE>::IsEmpty() const
 {
@@ -122,6 +160,9 @@ bool List<TYPE>::IsEmpty() const
  
 } 
 
+/**
+Vide la liste.
+*/
 template <class TYPE>
 void List<TYPE>::Clear()
 {
@@ -134,8 +175,15 @@ void List<TYPE>::Clear()
 		delete ptrCurrentCell->Previous;
 		ptrCurrentCell = PtrCurrentCell->Next;
 	}
+	delete last;
+	first = NULL;
+	last = NULL;
 }
 
+/**
+Retourne un pointeur vers le premier element de la liste
+@return Un pointeur vers le premier element de la liste
+*/
 //Méthodes déjà implémentées
 template <class TYPE>
 Cell<TYPE>* List<TYPE>::Begin() const
@@ -143,12 +191,22 @@ Cell<TYPE>* List<TYPE>::Begin() const
     return this->first;
 }
 
+/**
+Retourne un pointeur vers le dernier element de la liste
+@return Un pointeur vers le dernier element de la liste
+*/
 template <class TYPE>
 Cell<TYPE>* List<TYPE>::End() const
 {
     return this->last;
 }
 
+/**
+Surcharge de l'operateur <<
+@param[in] _sortie L'ostream contenant la valeur de retour
+@param[in] _list La liste.
+@return Un ostream contenant tous les elements de la liste separes par des sauts de ligne
+*/
 template <class TYPE>
 ostream& operator<<(ostream& _sortie, const List<TYPE>& _list)
 {
