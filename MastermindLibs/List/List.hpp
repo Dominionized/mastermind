@@ -46,10 +46,9 @@ void List<TYPE>::Insert(TYPE* _Element, Iterator<TYPE>& _Iter)
 		throw("Impossible d'ajouter a la fin.");
 		break;
 	case first:
-		TYPE* ptrSecondCell = first;
-		first = _Element;
+		Cell<TYPE>* ptrSecondCell = first;
+		first = new Cell<TYPE>(_Element, NULL, ptrSecondCell); //Previous -> NULL, Next -> 2e noeud
 		ptrSecondCell->Previous = first;
-		first->Next = ptrSecondCell;
 		break;
 	case default:
 		Cell<TYPE> newCell = new Cell<TYPE>(_Element, _Iter->GetCurrent()->Previous, _Iter->GetCurrent());
