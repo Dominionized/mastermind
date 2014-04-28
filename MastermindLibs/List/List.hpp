@@ -42,7 +42,7 @@ void List<TYPE>::Insert(TYPE* _Element, Iterator<TYPE>& _Iter)
 
 	switch (_Iter->GetCurrent())
 	{
-	case last:
+	case NULL:
 		throw("Impossible d'ajouter a la fin.");
 		break;
 	case first:
@@ -61,7 +61,19 @@ void List<TYPE>::Insert(TYPE* _Element, Iterator<TYPE>& _Iter)
 template <class TYPE>
 void List<TYPE>::Erase(Iterator<TYPE>& _Iter)
 {
-    //4 cas possibles... A vous de les trouver!
+	switch (_Iter->GetCurrent())
+	{
+	case NULL:
+		throw("Iterateur invalide");
+		break;
+	case first:
+
+		break;
+	case last:
+		break;
+	case default:
+		break;
+	}
 }
 
 template <class TYPE>
