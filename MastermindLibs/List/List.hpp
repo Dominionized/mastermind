@@ -51,8 +51,7 @@ void List<TYPE>::Insert(TYPE* _Element, Iterator<TYPE>& _Iter)
 		ptrSecondCell->Previous = first;
 		break;
 	case default:
-		Cell<TYPE> newCell = new Cell<TYPE>(_Element, _Iter->GetCurrent()->Previous, _Iter->GetCurrent());
-		_Iter->GetCurrent()->Previous->Next = newCell;
+		_Iter->GetCurrent()->Previous->Next = new Cell<TYPE>(_Element, _Iter->GetCurrent()->Previous, _Iter->GetCurrent());;
 		_Iter->GetCurrent()->Previous = newCell;
 		break;
 	}
@@ -68,7 +67,7 @@ void List<TYPE>::Erase(Iterator<TYPE>& _Iter)
 template <class TYPE>
 TYPE* List<TYPE>::GetElement(const Iterator<TYPE>& _Iter) const
 {
-
+	return &(_Iter->GetCurrentElement);
 }
 
 template <class TYPE>
