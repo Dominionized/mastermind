@@ -9,5 +9,13 @@ public:
 
     void RunAllTests();
 	void testPushBack();
+	void testInsert();
+	void testErase();
+	void testGetElement();
+	void testGetNbElement();
+	void testIsEmpty();
+	void testClear();
+
+
 };
 
