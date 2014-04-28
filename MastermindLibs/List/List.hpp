@@ -42,8 +42,8 @@ void List<TYPE>::Insert(TYPE* _Element, Iterator<TYPE>& _Iter)
 
 	switch (_Iter->GetCurrent())
 	{
-	case NULL:
-		throw("Impossible d'ajouter a la fin.");
+	case NULL: //L'iterateur n'est pas valide
+		throw("Impossible d'ajouter a la fin ou iterateur invalide.");
 		break;
 	case first:
 		Cell<TYPE>* ptrSecondCell = first;
@@ -61,17 +61,37 @@ void List<TYPE>::Insert(TYPE* _Element, Iterator<TYPE>& _Iter)
 template <class TYPE>
 void List<TYPE>::Erase(Iterator<TYPE>& _Iter)
 {
+	/*
+	4 cas :
+
+	1. L'iterateur n'est pas valide
+	2. L'iterateur pointe vers le premier element
+	3. L'iterateur pointe vers le dernier element
+	4. L'iterateur pointe n'importe ou d'autre
+	*/
+
 	switch (_Iter->GetCurrent())
 	{
 	case NULL:
 		throw("Iterateur invalide");
 		break;
 	case first:
-
+		Cell<TYPE>* newFirst = first->Next;
+		delete first;
+		first = newFirst;
+		first->Previous = NULL;
 		break;
 	case last:
+		Cell<TYPE>* newLast = last->Previous;
+		delete last;
+		last = newLast;
+		last->Next = NULL;
 		break;
 	case default:
+		Cell<TYPE>* ptrCellToDelete = _Iter->GetCurrent();
+		ptrCellToDelete->Previous->Next = ptrCellToDelete->Next;
+		ptrCellToDelete->Next->Previous = ptrCellToDelete->Previous;
+		delete ptrCellToDelete;
 		break;
 	}
 }
