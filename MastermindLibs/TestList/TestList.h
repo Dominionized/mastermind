@@ -15,7 +15,9 @@ public:
 	void testGetNbElement();
 	void testIsEmpty();
 	void testClear();
-
-
+	void testNext();
+	void testPrevious();
+	void testGetCurrent();
+	void testSetCurrent();
 };
 
