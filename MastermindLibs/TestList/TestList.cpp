@@ -108,3 +108,44 @@ void TestList::testClear()
 	liste.Clear();
 	assert(liste.Begin()->Element == NULL && liste.End()->Element == NULL);
 }
+void TestList::testGetCurrent()
+{
+	List<int> liste;
+	Iterator<int> iterateur;
+	int* element;
+
+	liste.PushBack(element);
+	assert(liste.Begin() == iterateur.GetCurrent());
+}
+void TestList::testSetCurrent()
+{
+	List<int> liste;
+	Iterator<int> iterateur;
+
+	iterateur.SetCurrent(liste.Begin());
+	assert(iterateur.GetCurrent() == liste.Begin());
+}
+void TestList::testNext()
+{
+	List<int> liste;
+	Iterator<int> iterateur;
+	int* element;
+
+	iterateur.SetCurrent(liste.Begin());
+	liste.PushBack(element);
+	iterateur.Next();
+	assert(iterateur.GetCurrent() == liste.End());
+}
+void TestList::testPrevious()
+{
+	List<int> liste;
+	Iterator<int> iterateur;
+	int* element1;
+	int* element2;
+
+	liste.PushBack(element1);
+	liste.PushBack(element2);
+	iterateur.SetCurrent(liste.End());
+	iterateur.Previous();
+	assert(iterateur.GetCurrentElement() == liste.Begin()->Element);
+}
