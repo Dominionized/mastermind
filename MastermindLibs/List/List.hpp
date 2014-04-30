@@ -45,6 +45,7 @@ void List<TYPE>::PushBack(TYPE* _element)
 		ptrSecondLastCell->Next = newCell;
 		last->Previous = ptrSecondLastCell;
 	}
+	nbElements++;
 }
 
 /**
@@ -65,7 +66,7 @@ void List<TYPE>::Insert(TYPE* _Element, Iterator<TYPE>& _Iter)
 	{
 	case NULL: //L'iterateur n'est pas valide
 		throw("Impossible d'ajouter a la fin ou iterateur invalide.");
-		break;
+		return;
 	case first:
 		Cell<TYPE>* ptrSecondCell = first;
 		first = new Cell<TYPE>(_Element, NULL, ptrSecondCell); //Previous -> NULL, Next -> 2e noeud
@@ -76,6 +77,7 @@ void List<TYPE>::Insert(TYPE* _Element, Iterator<TYPE>& _Iter)
 		_Iter->GetCurrent()->Previous = newCell;
 		break;
 	}
+	nbElements++;
 
 } 
 
@@ -99,7 +101,7 @@ void List<TYPE>::Erase(Iterator<TYPE>& _Iter)
 	{
 	case NULL:
 		throw("Iterateur invalide");
-		break;
+		return;
 	case first:
 		Cell<TYPE>* newFirst = first->Next;
 		delete first;
@@ -119,6 +121,7 @@ void List<TYPE>::Erase(Iterator<TYPE>& _Iter)
 		delete ptrCellToDelete;
 		break;
 	}
+	nbElements--;
 }
 
 /**
@@ -157,7 +160,6 @@ bool List<TYPE>::IsEmpty() const
 	{
 		return false;
 	}
- 
 } 
 
 /**
@@ -178,6 +180,7 @@ void List<TYPE>::Clear()
 	delete last;
 	first = NULL;
 	last = NULL;
+	nbElements = 0;
 }
 
 /**
