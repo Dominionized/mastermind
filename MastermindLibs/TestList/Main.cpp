@@ -4,14 +4,6 @@
 void main()
 {
     TestList testlist;
-	List<int> liste;
-	int* element;
-	for (int i = 0; i < 10; i++)
-	{
-		element = &i;
-		liste.PushBack(element);
-	}
-	cout << liste;
-
+	testlist.RunAllTests();
 	system("pause");
 }

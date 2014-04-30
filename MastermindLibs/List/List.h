@@ -10,7 +10,7 @@ using namespace std;
 /**
  * La classe Liste représente une liste d'éléments doublement chaînée.
  * Les éléments pointés peuvent être des objets de n'importe quelle classe.
- * @author Jasmin Brassard, janvier 2012
+ * @author Jasmin Brassard, avril 2012
  *         Cours 420-220-SF - Cégep de Sainte-Foy
  */
 template <class TYPE>

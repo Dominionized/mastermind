@@ -3,7 +3,7 @@
 
 	@author Dominique Begin
 	@author Olivier Therrien-Lefebvre
-	@date	30 janvier 2014
+	@date	30 avril 2014
 
 */
 /**
@@ -14,6 +14,7 @@ List<TYPE>::List()
 {
 	first = NULL;
 	last = NULL;
+	nbElements = 0;
 }
 
 /**
@@ -62,13 +63,12 @@ void List<TYPE>::Insert(TYPE* _Element, Iterator<TYPE>& _Iter)
     //2 cas 1)Insertion au début 
     //      2)Insertion entre premier et dernier 
 
-	Cell<TYPE>* cellToAdd = _Iter.GetCurrent();
-	if (cellToAdd == NULL) //L'iterateur n'est pas valide
+	if (_Iter.GetCurrent() == NULL) //L'iterateur n'est pas valide
 	{
 		throw("Impossible d'ajouter a la fin ou iterateur invalide.");
 		return;
 	}
-	else if (cellToAdd == first)
+	else if (_Iter.GetCurrent() == first)
 	{
 		Cell<TYPE>* ptrSecondCell = first;
 		first = new Cell<TYPE>(_Element, NULL, ptrSecondCell); //Previous -> NULL, Next -> 2e noeud
@@ -76,8 +76,8 @@ void List<TYPE>::Insert(TYPE* _Element, Iterator<TYPE>& _Iter)
 	}
 	else
 	{
-		_Iter.GetCurrent()->Previous->Next = new Cell<TYPE>(_Element, cellToAdd->Previous, cellToAdd);;
-		_Iter.GetCurrent()->Previous = cellToAdd;
+		_Iter.GetCurrent()->Previous->Next = new Cell<TYPE>(_Element, _Iter.GetCurrent()->Previous, _Iter.GetCurrent());;
+		_Iter.GetCurrent()->Previous = _Iter.GetCurrent()->Previous->Next;
 	}
 	nbElements++;
 } 
@@ -102,6 +102,14 @@ void List<TYPE>::Erase(Iterator<TYPE>& _Iter)
 	if (cellToErase == NULL)
 	{
 		throw("Iterateur invalide");
+		return;
+	}
+	else if (nbElements == 1)
+	{
+		delete first;
+		first = NULL;
+		last = NULL;
+		nbElements = 0;
 		return;
 	}
 	else if (cellToErase == first)
@@ -173,6 +181,16 @@ void List<TYPE>::Clear()
 {
 
 	// On commence au 2e et on supprime le précédent à chaque fois
+	if (IsEmpty()) return;
+	if (nbElements == 1)
+	{
+		delete first;
+		first = NULL;
+		last = NULL;
+		nbElements = 0;
+		return;
+	}
+
 	Cell<TYPE>* ptrCurrentCell = first->Next;
 
 	while (ptrCurrentCell != NULL)

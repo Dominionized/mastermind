@@ -30,52 +30,56 @@ void TestList::testPushBack()
 {
 	cout << "test PushBack" << endl;
 	List<int> liste;
-	int* element;
+	int entier = 37;
+	int* element = &entier;
 
 	liste.PushBack(element);
 	assert(liste.End()->Element == element);
+	cout << "Ok !" << endl;
 }
 void TestList::testInsert()
 {
 	cout << "test Insert" << endl;
 	List<int> liste;
 	Iterator<int> iterateur;
-	int* element;
+	int entier = 37;
+	int* element = &entier;
 
-	if (liste.IsEmpty())
-	{
-		liste.PushBack(element);
-		assert(liste.End()->Element == element);
-	}
+	liste.PushBack(element);
+	assert(liste.End()->Element == element);
+
 	iterateur.SetCurrent(liste.End());
-	if (iterateur.GetCurrent() == liste.End())
-	{
-		liste.PushBack(element);
-		assert(liste.End()->Element == element);
-	}
+	liste.PushBack(element);
+	assert(liste.End()->Element == element);
+
 	iterateur.SetCurrent(liste.Begin());
-	if (iterateur.GetCurrent() == liste.Begin())
-	{
-		liste.Insert(element, iterateur);
-		assert(liste.Begin()->Element == element);
-	}
+	liste.Insert(element, iterateur);
+	assert(liste.Begin()->Element == element);
+
 	iterateur.Next();
 	liste.Insert(element, iterateur);
 	assert(iterateur.GetCurrentElement() == element);
+
+	cout << "Ok !" << endl;
 }
 void TestList::testIsEmpty()
 {
 	cout << "test IsEmpty" << endl;
 	List<int> liste;
 
-	assert(liste.Begin()->Element == NULL);
+	assert(liste.Begin() == NULL);
+	assert(liste.End() == NULL);
+	cout << "Ok !" << endl;
 }
 void TestList::testErase()
 {
 	cout << "test Erase" << endl;
 	List<int> liste;
 	Iterator<int> iterateur;
-	int* element;
+	int entier = 37;
+	int* element = &entier;
+
+	liste.PushBack(element);
 
 	iterateur.SetCurrent(liste.Begin());
 	iterateur.GetCurrent()->Element = element;
@@ -83,19 +87,22 @@ void TestList::testErase()
 	if (liste.IsEmpty() == false)
 	{
 		liste.Erase(iterateur);
-		assert(iterateur.GetCurrentElement() == NULL);
+		assert(liste.IsEmpty());
 	}
+	cout << "Ok !" << endl;
 }
 void TestList::testGetElement()
 {
 	cout << "test GetElement" << endl;
 	List<int> liste;
 	Iterator<int> iterateur;
-	int* element;
+	int entier = 37;
+	int* element = &entier;
 
 	liste.PushBack(element);
 	iterateur.SetCurrent(liste.End());
 	assert(element == liste.GetElement(iterateur));
+	cout << "Ok !" << endl;
 }
 void TestList::testGetNbElement()
 {
@@ -105,29 +112,34 @@ void TestList::testGetNbElement()
 	int nbElement = 0;
 
 	iterateur.SetCurrent(liste.Begin());
-	while (liste.GetElement(iterateur) != NULL)
+	while (iterateur.GetCurrent() != NULL)
 	{
 		nbElement++;
 		iterateur.Next();
 	}
 	assert(nbElement == liste.GetNbElements());
+	cout << "Ok !" << endl;
 }
 void TestList::testClear()
 {
 	cout << "test Clear" << endl;
 	List<int> liste;
 	liste.Clear();
-	assert(liste.Begin()->Element == NULL && liste.End()->Element == NULL);
+	assert(liste.Begin() == NULL && liste.End() == NULL);
+	cout << "Ok !" << endl;
 }
 void TestList::testGetCurrent()
 {
 	cout << "test GetCurrent" << endl;
 	List<int> liste;
 	Iterator<int> iterateur;
-	int* element;
+	int entier = 37;
+	int* element = &entier;
 
 	liste.PushBack(element);
+	iterateur.SetCurrent(liste.End());
 	assert(liste.Begin() == iterateur.GetCurrent());
+	cout << "Ok !" << endl;
 }
 void TestList::testSetCurrent()
 {
@@ -137,30 +149,39 @@ void TestList::testSetCurrent()
 
 	iterateur.SetCurrent(liste.Begin());
 	assert(iterateur.GetCurrent() == liste.Begin());
+	cout << "Ok !" << endl;
 }
 void TestList::testNext()
 {
 	cout << "test Next" << endl;
 	List<int> liste;
 	Iterator<int> iterateur;
-	int* element;
+	int entier = 37;
+	int* element1 = &entier;
+	int entier2 = 42;
+	int* element2 = &entier2;
 
+	liste.PushBack(element1);
+	liste.PushBack(element2);
 	iterateur.SetCurrent(liste.Begin());
-	liste.PushBack(element);
 	iterateur.Next();
 	assert(iterateur.GetCurrent() == liste.End());
+	cout << "Ok !" << endl;
 }
 void TestList::testPrevious()
 {
 	cout << "test Previous" << endl;
 	List<int> liste;
 	Iterator<int> iterateur;
-	int* element1;
-	int* element2;
+	int entier = 37;
+	int* element1 = &entier;
+	int entier2 = 42;
+	int* element2 = &entier2;
 
 	liste.PushBack(element1);
 	liste.PushBack(element2);
 	iterateur.SetCurrent(liste.End());
 	iterateur.Previous();
-	assert(iterateur.GetCurrentElement() == liste.Begin()->Element);
+	assert(iterateur.GetCurrent() == liste.Begin());
+	cout << "Ok !" << endl;
 }
