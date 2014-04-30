@@ -33,7 +33,7 @@ void List<TYPE>::PushBack(TYPE* _element)
 {
 	Cell<TYPE>* newCell = new Cell<TYPE>(_element, last, NULL);
 
-	if (isEmpty())
+	if (IsEmpty())
 	{
 		first = newCell;
 		last = newCell;
@@ -62,23 +62,24 @@ void List<TYPE>::Insert(TYPE* _Element, Iterator<TYPE>& _Iter)
     //2 cas 1)Insertion au début 
     //      2)Insertion entre premier et dernier 
 
-	switch (_Iter->GetCurrent())
+	Cell<TYPE>* cellToAdd = _Iter.GetCurrent();
+	if (cellToAdd == NULL) //L'iterateur n'est pas valide
 	{
-	case NULL: //L'iterateur n'est pas valide
 		throw("Impossible d'ajouter a la fin ou iterateur invalide.");
 		return;
-	case first:
+	}
+	else if (cellToAdd == first)
+	{
 		Cell<TYPE>* ptrSecondCell = first;
 		first = new Cell<TYPE>(_Element, NULL, ptrSecondCell); //Previous -> NULL, Next -> 2e noeud
 		ptrSecondCell->Previous = first;
-		break;
-	case default:
-		_Iter->GetCurrent()->Previous->Next = new Cell<TYPE>(_Element, _Iter->GetCurrent()->Previous, _Iter->GetCurrent());;
-		_Iter->GetCurrent()->Previous = newCell;
-		break;
+	}
+	else
+	{
+		_Iter.GetCurrent()->Previous->Next = new Cell<TYPE>(_Element, cellToAdd->Previous, cellToAdd);;
+		_Iter.GetCurrent()->Previous = cellToAdd;
 	}
 	nbElements++;
-
 } 
 
 /**
@@ -97,9 +98,7 @@ void List<TYPE>::Erase(Iterator<TYPE>& _Iter)
 	4. L'iterateur pointe n'importe ou d'autre
 	*/
 
-	//FUCKING EPIC DOWN HERE//
-
-	Cell<TYPE> cellToErase = _Iter.GetCurrent();
+	Cell<TYPE>* cellToErase = _Iter.GetCurrent();
 	if (cellToErase == NULL)
 	{
 		throw("Iterateur invalide");
@@ -121,10 +120,9 @@ void List<TYPE>::Erase(Iterator<TYPE>& _Iter)
 	}
 	else
 	{
-		Cell<TYPE>* ptrCellToDelete = cellToerase;
-		ptrCellToDelete->Previous->Next = ptrCellToDelete->Next;
-		ptrCellToDelete->Next->Previous = ptrCellToDelete->Previous;
-		delete ptrCellToDelete;
+		cellToErase->Previous->Next = cellToErase->Next;
+		cellToErase->Next->Previous = cellToErase->Previous;
+		delete cellToErase;
 	}
 	nbElements--;
 }
@@ -137,7 +135,7 @@ Retourne l'element de la cellule referencee par l'iterateur
 template <class TYPE>
 TYPE* List<TYPE>::GetElement(const Iterator<TYPE>& _Iter) const
 {
-	return &(_Iter->GetCurrentElement);
+	return _Iter.GetCurrentElement();
 }
 
 /**
@@ -157,7 +155,7 @@ Retourne si la liste est vide ou non
 template <class TYPE>
 bool List<TYPE>::IsEmpty() const
 {
-	if (first = NULL)
+	if (first == NULL)
 	{
 		return true;
 	}
@@ -180,7 +178,7 @@ void List<TYPE>::Clear()
 	while (ptrCurrentCell != NULL)
 	{
 		delete ptrCurrentCell->Previous;
-		ptrCurrentCell = PtrCurrentCell->Next;
+		ptrCurrentCell = ptrCurrentCell->Next;
 	}
 	delete last;
 	first = NULL;

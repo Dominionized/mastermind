@@ -61,7 +61,7 @@ void TestList::testInsert()
 	}
 	iterateur.Next();
 	liste.Insert(element, iterateur);
-	assert(iterateur.GetCurrentElement == element);
+	assert(iterateur.GetCurrentElement() == element);
 }
 void TestList::testIsEmpty()
 {
