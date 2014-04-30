@@ -21,9 +21,14 @@ void TestList::RunAllTests()
 	testGetElement();
 	testGetNbElement();
 	testClear();
+	testNext();
+	testPrevious();
+	testGetCurrent();
+	testSetCurrent();
 }
 void TestList::testPushBack()
 {
+	cout << "test PushBack" << endl;
 	List<int> liste;
 	int* element;
 
@@ -32,6 +37,7 @@ void TestList::testPushBack()
 }
 void TestList::testInsert()
 {
+	cout << "test Insert" << endl;
 	List<int> liste;
 	Iterator<int> iterateur;
 	int* element;
@@ -59,12 +65,14 @@ void TestList::testInsert()
 }
 void TestList::testIsEmpty()
 {
+	cout << "test IsEmpty" << endl;
 	List<int> liste;
 
 	assert(liste.Begin()->Element == NULL);
 }
 void TestList::testErase()
 {
+	cout << "test Erase" << endl;
 	List<int> liste;
 	Iterator<int> iterateur;
 	int* element;
@@ -80,6 +88,7 @@ void TestList::testErase()
 }
 void TestList::testGetElement()
 {
+	cout << "test GetElement" << endl;
 	List<int> liste;
 	Iterator<int> iterateur;
 	int* element;
@@ -90,6 +99,7 @@ void TestList::testGetElement()
 }
 void TestList::testGetNbElement()
 {
+	cout << "test GetNbElement" << endl;
 	List<int> liste;
 	Iterator<int> iterateur;
 	int nbElement = 0;
@@ -104,12 +114,14 @@ void TestList::testGetNbElement()
 }
 void TestList::testClear()
 {
+	cout << "test Clear" << endl;
 	List<int> liste;
 	liste.Clear();
 	assert(liste.Begin()->Element == NULL && liste.End()->Element == NULL);
 }
 void TestList::testGetCurrent()
 {
+	cout << "test GetCurrent" << endl;
 	List<int> liste;
 	Iterator<int> iterateur;
 	int* element;
@@ -119,6 +131,7 @@ void TestList::testGetCurrent()
 }
 void TestList::testSetCurrent()
 {
+	cout << "test SetCurrent" << endl;
 	List<int> liste;
 	Iterator<int> iterateur;
 
@@ -127,6 +140,7 @@ void TestList::testSetCurrent()
 }
 void TestList::testNext()
 {
+	cout << "test Next" << endl;
 	List<int> liste;
 	Iterator<int> iterateur;
 	int* element;
@@ -138,6 +152,7 @@ void TestList::testNext()
 }
 void TestList::testPrevious()
 {
+	cout << "test Previous" << endl;
 	List<int> liste;
 	Iterator<int> iterateur;
 	int* element1;
