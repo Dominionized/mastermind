@@ -97,29 +97,34 @@ void List<TYPE>::Erase(Iterator<TYPE>& _Iter)
 	4. L'iterateur pointe n'importe ou d'autre
 	*/
 
-	switch (_Iter->GetCurrent())
+	//FUCKING EPIC DOWN HERE//
+
+	Cell<TYPE> cellToErase = _Iter.GetCurrent();
+	if (cellToErase == NULL)
 	{
-	case NULL:
 		throw("Iterateur invalide");
 		return;
-	case first:
+	}
+	else if (cellToErase == first)
+	{
 		Cell<TYPE>* newFirst = first->Next;
 		delete first;
 		first = newFirst;
 		first->Previous = NULL;
-		break;
-	case last:
+	}
+	else if (cellToErase == last)
+	{
 		Cell<TYPE>* newLast = last->Previous;
 		delete last;
 		last = newLast;
 		last->Next = NULL;
-		break;
-	case default:
-		Cell<TYPE>* ptrCellToDelete = _Iter->GetCurrent();
+	}
+	else
+	{
+		Cell<TYPE>* ptrCellToDelete = cellToerase;
 		ptrCellToDelete->Previous->Next = ptrCellToDelete->Next;
 		ptrCellToDelete->Next->Previous = ptrCellToDelete->Previous;
 		delete ptrCellToDelete;
-		break;
 	}
 	nbElements--;
 }
