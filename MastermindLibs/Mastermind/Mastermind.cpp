@@ -3,16 +3,40 @@
 
 Mastermind::Mastermind()
 {
+	list = new List<ArrayI<Color>>;
+	int compteurTabSequence;
+
+	for (int i = 1; i <= 8; i++)
+	{
+		for (int j = 1; j <= 8; j++)
+		{
+			for (int k = 1; k <= 8; k++)
+			{
+				for (int l = 1; l <= 8; l++)
+				{
+					ArrayI<Color>* ptrNewArray = new ArrayI<Color>(4);
+					ptrNewArray->SetElement(Color(i), 0);
+					ptrNewArray->SetElement(Color(j), 1);
+					ptrNewArray->SetElement(Color(k), 2);
+					ptrNewArray->SetElement(Color(l), 3);
+					list->PushBack(ptrNewArray);
+					compteurTabSequence++;
+					tabSequences[compteurTabSequence] = ptrNewArray;
+				}
+			}
+		}
+	}
    //Il faut créer ici les 4096 séquences de couleurs possibles. Bonne réflexion!
 }
 
 Mastermind::~Mastermind()
 {
+	delete list;
 }
 
 int Mastermind::GetNbElements() const
 {
-    return 1;
+	return list->GetNbElements();
 }
 
 
@@ -20,6 +44,10 @@ ArrayI<Color>* Mastermind::GetElement() const
 {
     //Utiliser la classe RandomNumber pour ne pas offrir toujours le premier élément de la liste (les parties seraient toutes pareilles avec la même séquence cachée)
     ArrayI<Color>* PourCompiler;
+	RandomNumber randomNumberator;
+	int randomNumber = randomNumberator.GetNumber(8);
+
+	PourCompiler = 
     return PourCompiler;
 }
 
