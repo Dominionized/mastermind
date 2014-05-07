@@ -3,6 +3,7 @@
 #include "ArrayI.h"
 #include "List.h"
 #include "MasterMindColor.h"
+#include "Iterator.h"
 
 class Mastermind
 {

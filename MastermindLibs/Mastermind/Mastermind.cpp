@@ -39,15 +39,23 @@ int Mastermind::GetNbElements() const
 	return list->GetNbElements();
 }
 
-
 ArrayI<Color>* Mastermind::GetElement() const
 {
     //Utiliser la classe RandomNumber pour ne pas offrir toujours le premier élément de la liste (les parties seraient toutes pareilles avec la même séquence cachée)
     ArrayI<Color>* PourCompiler;
 	RandomNumber randomNumberator;
-	int randomNumber = randomNumberator.GetNumber(8);
+	Iterator<ArrayI<Color>> monIterateur;
 
-	PourCompiler = 
+	int randomNumber = randomNumberator.GetNumber(GetNbElements());
+
+	monIterateur.SetCurrent(list->Begin());
+
+	for (int i = 0; i < randomNumber; i++)
+	{
+		monIterateur.Next();
+	}
+
+	PourCompiler = list->GetElement(monIterateur);
     return PourCompiler;
 }
 
