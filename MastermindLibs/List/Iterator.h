@@ -1,3 +1,4 @@
+#pragma once
 #include "Cell.h"
 
 template <class TYPE>
