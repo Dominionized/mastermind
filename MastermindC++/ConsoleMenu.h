@@ -26,5 +26,7 @@ public:
 	ArrayI<Color>* tabCouleursRef;
 	short nbCoups = 0;
 	short tabVerdicts[4];
+private:
+	Mastermind mastermind;
 };
 
