@@ -2,17 +2,6 @@
 //
 
 #include "ConsoleMenu.h"
-#include <stdio.h>
-#include <tchar.h>
-//#include <time.h>
-#include <iostream>
-#include <string>
-using namespace std;
-
-#include <windows.h> //Pour la fonction CharToOem ->Propriétédu projet "Jeu de caractères" doit être à "Non défini"
-
-#include "Mastermind.h"
-
 
 ConsoleMenu::ConsoleMenu()
 {
@@ -47,8 +36,6 @@ void ConsoleMenu::Run()
 		<< tabCouleurs[3] << " "
 		<< endl;
 
-	short nbCoups = 0;
-
 	cout << endl << endl << accents("Début de la partie!") << endl << endl;
 	system("pause");
 	while (true){
@@ -64,43 +51,11 @@ void ConsoleMenu::Run()
 		}
 		nbCoups++;
 
+		obtentionCombinaisonCouleurRéférence();
 
 		cout << accents("NbElements:") << iNbElements << endl;
 
-		//Obtention de la combinaison de couleur de référence
-		ArrayI<Color>* tabCouleursRef = mastermind.GetElement();
-
-		cout << accents("--------Couleurs à deviner: ") << tabCouleurs[0] << " "
-			<< tabCouleurs[1] << " "
-			<< tabCouleurs[2] << " "
-			<< tabCouleurs[3] << " "
-			<< "--------"
-			<< endl;
-
-
-		cout << endl << "Choix de HAL (" << accents("essai #") << nbCoups << "):    " << (*tabCouleursRef)[0] << " "
-			<< (*tabCouleursRef)[1] << " "
-			<< (*tabCouleursRef)[2] << " "
-			<< (*tabCouleursRef)[3] << " "
-			<< endl << endl;
-
-		short tabVerdicts[4];
-
-		//Lecteur des 4 verdicts de l'usager
-		for (int i = 0; i<4; i++){
-			do{
-				string entree;
-
-				//Couleur c=(*t)[0]; //Si la liste retourne un pointeur
-				Color c = (*tabCouleursRef)[i];
-
-				cout << endl << "Couleur " << i + 1 << " - " << (*tabCouleursRef)[i] << endl;
-				cout << "Choisir (1-Bonne couleur et emplacement 2-Bonne couleur mais mauvais emplacement 3-Mauvaise couleur): ";
-
-				cin >> entree;
-				tabVerdicts[i] = atoi(entree.c_str());
-			} while (tabVerdicts[i] != 1 && tabVerdicts[i] != 2 && tabVerdicts[i] != 3);
-		}
+		lectureVerdicts();
 
 		if (tabVerdicts[0] == 1 && tabVerdicts[1] == 1 && tabVerdicts[2] == 1 && tabVerdicts[3] == 1){
 			cout << endl << accents("J'ai trouvé la réponse après ") << nbCoups;
@@ -113,16 +68,7 @@ void ConsoleMenu::Run()
 			cout << accents("----HAL 9000----") << endl << endl;
 			break;
 		}
-
-		//------------------------Epuration de la liste des combinaisons qui ne respectent pas les critères-----------------------------
-		Color temp[4];
-		temp[0] = (*tabCouleursRef)[0];
-		temp[1] = (*tabCouleursRef)[1];
-		temp[2] = (*tabCouleursRef)[2];
-		temp[3] = (*tabCouleursRef)[3];
-
-		cout << mastermind.CleanList(temp, tabVerdicts) << accents(" combinaisons supprimées.") << endl;
-
+		epurationListe();
 	}
 	return;
 }
@@ -147,8 +93,9 @@ void ConsoleMenu::displayCredits()
 
 string ConsoleMenu::choixDesCouleurs()
 {
-	for (int i = 0; i < 4; i++)
-	{
+	int i;
+	string choix;
+	do{
 		if (i = 0)
 		{
 			cout << accents("Vous devrez choisir un séquence de 4 couleurs parmis la sélection de couleur") << endl << endl;
@@ -163,20 +110,68 @@ string ConsoleMenu::choixDesCouleurs()
 		cout << "    7-Mauve" << endl;
 		cout << "    8-Blanc" << endl;
 
-		string choix;
-		do{
-			cout << "Entrer la suite de chiffres, 0 pour sortir: ";
-			cin >> choix;
-			if (choix == "0")
-			{
-				return;
-			}
-			else
-			{
-				tabCouleurs[i].SetColor(atoi(choix.substr(0, 1).c_str()));
-			}
 
-		} while (choix.length() != 4 || tabCouleurs[0] > 8 || tabCouleurs[1] > 8 || tabCouleurs[2] > 8 || tabCouleurs[3] > 8);
-		return choix;
+		cout << "Entrer la suite de chiffres, 0 pour sortir: ";
+		cin >> choix;
+		if (choix == "0")
+		{
+			break;
+		}
+		else
+		{
+			tabCouleurs[i].SetColor(atoi(choix.substr(0, 1).c_str()));
+		}
+
+	} while (choix.length() != 4 || tabCouleurs[0] > 8 || tabCouleurs[1] > 8 || tabCouleurs[2] > 8 || tabCouleurs[3] > 8);
+	return choix;
+}
+
+void ConsoleMenu::obtentionCombinaisonCouleurRéférence()
+{
+	//Obtention de la combinaison de couleur de référence
+	ArrayI<Color>* tabCouleursRef = mastermind.GetElement();
+
+	cout << accents("--------Couleurs à deviner: ") << tabCouleurs[0] << " "
+		<< tabCouleurs[1] << " "
+		<< tabCouleurs[2] << " "
+		<< tabCouleurs[3] << " "
+		<< "--------"
+		<< endl;
+
+
+	cout << endl << "Choix de HAL (" << accents("essai #") << nbCoups << "):    " << (*tabCouleursRef)[0] << " "
+		<< (*tabCouleursRef)[1] << " "
+		<< (*tabCouleursRef)[2] << " "
+		<< (*tabCouleursRef)[3] << " "
+		<< endl << endl;
+}
+void ConsoleMenu::lectureVerdicts()
+{
+	//Lecteur des 4 verdicts de l'usager
+	for (int i = 0; i < 4; i++){
+		do{
+			string entree;
+
+			//Couleur c=(*t)[0]; //Si la liste retourne un pointeur
+			Color c = (*tabCouleursRef)[i];
+
+			cout << endl << "Couleur " << i + 1 << " - " << (*tabCouleursRef)[i] << endl;
+			cout << "Choisir (1-Bonne couleur et emplacement 2-Bonne couleur mais mauvais emplacement 3-Mauvaise couleur): ";
+
+			cin >> entree;
+			tabVerdicts[i] = atoi(entree.c_str());
+		} while (tabVerdicts[i] != 1 && tabVerdicts[i] != 2 && tabVerdicts[i] != 3);
 	}
+}
+
+void ConsoleMenu::epurationListe()
+{
+	//------------------------Epuration de la liste des combinaisons qui ne respectent pas les critères-----------------------------
+	Color temp[4];
+	temp[0] = (*tabCouleursRef)[0];
+	temp[1] = (*tabCouleursRef)[1];
+	temp[2] = (*tabCouleursRef)[2];
+	temp[3] = (*tabCouleursRef)[3];
+
+	cout << mastermind.CleanList(temp, tabVerdicts) << accents(" combinaisons supprimées.") << endl;
 }
