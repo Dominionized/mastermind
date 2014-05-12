@@ -1,6 +1,5 @@
 /**	@file ConsoleMenu.cpp
 Fichier contenant les methodes de la classe ConsoleMenu.
-
 @author Olivier Therrien-Lefebvre
 @author Dominique Begin
 @date 15 mai 2014
