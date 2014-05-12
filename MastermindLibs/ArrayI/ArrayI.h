@@ -1,3 +1,10 @@
+/**	@file Array.h
+Fichier contenant la déclaration des méthodes de la classe Array.
+@author Olivier Therrien - Lefebvre
+@author Dominique Begin
+@date 15 mai 2014
+@version 1.0
+*/
 #pragma once
 
 #include <iostream>

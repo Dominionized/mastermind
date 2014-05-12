@@ -1,4 +1,10 @@
-#include <stdio.h> //Pour avoir NULL
+/**	@file List.h
+Fichier contenant la déclaration des méthodes de la classe List.
+@author Olivier Therrien - Lefebvre
+@author Dominique Begin
+@date 15 mai 2014
+@version 1.0
+*/#include <stdio.h> //Pour avoir NULL
 #include <iostream>
 #include <string>
 #include <assert.h>

@@ -1,4 +1,10 @@
-#pragma once
+/**	@file Iterator.h
+Fichier contenant la déclaration des méthodes de la classe Iterator.
+@author Olivier Therrien - Lefebvre
+@author Dominique Begin
+@date 15 mai 2014
+@version 1.0
+*/#pragma once
 #include "Cell.h"
 
 template <class TYPE>

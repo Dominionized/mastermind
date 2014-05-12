@@ -1,9 +1,8 @@
-/** @file List.hpp
+/** @file Cell.hpp
 Fichier contenant les methodes de la classe Cell.
-
 @author Dominique Begin
 @author Olivier Therrien-Lefebvre
-@date	30 avril 2014
+@date	15 mai 2014
 
 */
 
