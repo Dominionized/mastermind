@@ -42,7 +42,7 @@ int Mastermind::GetNbElements() const
 ArrayI<Color>* Mastermind::GetElement() const
 {
     //Utiliser la classe RandomNumber pour ne pas offrir toujours le premier élément de la liste (les parties seraient toutes pareilles avec la même séquence cachée)
-    ArrayI<Color>* PourCompiler;
+    ArrayI<Color>* randomArray;
 	RandomNumber randomNumberator;
 	Iterator<ArrayI<Color>> monIterateur;
 
@@ -55,17 +55,25 @@ ArrayI<Color>* Mastermind::GetElement() const
 		monIterateur.Next();
 	}
 
-	PourCompiler = list->GetElement(monIterateur);
-    return PourCompiler;
+	randomArray = list->GetElement(monIterateur);
+    return randomArray;
 }
 
 short Mastermind::CleanList(Color* _tabColorRef, short* _tabVerdicts)
 {
-
-     /*switch(tabVerdicts[i]){
+	for (int i = 0; i < 4; i++)
+	{
+	
+     switch(_tabVerdicts[i]){
                 
                 case 1: //Bonne couleur, bonne place
-
+					for (int j = 0; j < GetNbElements(); j++)
+					{
+						if (tabSequences[j]->GetElement(i) != _tabColorRef[i])
+						{
+							tabSequences[j]
+						}
+					}
                         //Si la séquence de couleurs traitée n'a pas la couleur à la bonne place, il faut la retirer de la liste.
 
                 case 2: //Bonne couleur, mauvaise place
@@ -75,6 +83,8 @@ short Mastermind::CleanList(Color* _tabColorRef, short* _tabVerdicts)
            
                 case 3: //Mauvaise couleur
                         //Si la séquence de couleurs traitée a la couleur, il faut la retirer de la liste.
-    };*/
+    };
+
+	}
     return 1; //Pour Compiler
 }
