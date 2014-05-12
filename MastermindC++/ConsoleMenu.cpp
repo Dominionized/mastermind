@@ -1,17 +1,31 @@
-// Mastermind.cpp : Defines the entry point for the console application.
-//
+/**	@file ConsoleMenu.cpp
+Fichier contenant les methodes de la classe ConsoleMenu.
+
+@author Olivier Therrien-Lefebvre
+@author Dominique Begin
+@date 15 mai 2014
+@version 1.0
+*/
 
 #include "ConsoleMenu.h"
 
+/**
+Constructeur de la classe ConsoleMenu.
+*/
 ConsoleMenu::ConsoleMenu()
 {
 }
 
-
+/**
+Destructeur de la classe ConsoleMenué
+*/
 ConsoleMenu::~ConsoleMenu()
 {
 }
 
+/**
+Methode qui prend en charge la gestion des accents.
+*/
 string accents(const string &pString){
 
 	assert(pString.length() <= 1024);
@@ -22,6 +36,9 @@ string accents(const string &pString){
 	return destination;
 }
 
+/**
+Methode qui debute le programme.
+*/
 void ConsoleMenu::Run()
 {
 	displayCredits();
@@ -51,7 +68,7 @@ void ConsoleMenu::Run()
 		}
 		nbCoups++;
 
-		obtentionCombinaisonCouleurRéférence();
+		obtentionCombinaisonCouleurReference();
 
 		cout << accents("NbElements:") << iNbElements << endl;
 
@@ -72,7 +89,10 @@ void ConsoleMenu::Run()
 	}
 	return;
 }
-
+/**
+Methode affichant les "credits".
+@see Run()
+*/
 void ConsoleMenu::displayCredits()
 {
 	cout << "|================================================|" << endl;
@@ -91,6 +111,11 @@ void ConsoleMenu::displayCredits()
 	system("pause");
 }
 
+/**
+Methode qui gere le choix des couleurs.
+@see Run()
+@return un string contenant les couleurs choisies.
+*/
 string ConsoleMenu::choixDesCouleurs()
 {
 	int i;
@@ -126,6 +151,10 @@ string ConsoleMenu::choixDesCouleurs()
 	return choix;
 }
 
+/**
+Methode qui va chercher la combinaison de couleurs de reference.
+@see Run()
+*/
 void ConsoleMenu::obtentionCombinaisonCouleurReference()
 {
 	//Obtention de la combinaison de couleur de référence
@@ -145,6 +174,11 @@ void ConsoleMenu::obtentionCombinaisonCouleurReference()
 		<< (*tabCouleursRef)[3] << " "
 		<< endl << endl;
 }
+
+/**
+Methode qui lit le verdict du joueur sur les couleurs.
+@see Run()
+*/
 void ConsoleMenu::lectureVerdicts()
 {
 	//Lecteur des 4 verdicts de l'usager
@@ -164,6 +198,10 @@ void ConsoleMenu::lectureVerdicts()
 	}
 }
 
+/**
+Methode qui enleve de la liste toute les combinaisons impossibles de couleurs.
+@see Run()
+*/
 void ConsoleMenu::epurationListe()
 {
 	//------------------------Epuration de la liste des combinaisons qui ne respectent pas les critères-----------------------------

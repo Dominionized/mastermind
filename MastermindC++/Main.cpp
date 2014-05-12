@@ -4,6 +4,13 @@
 #include <stdio.h>
 #include <tchar.h>
 #include "ConsoleMenu.h"
+/**
+@author Olivier Therrien - Lefebvre
+@author Dominique Begin
+@date 15 mai 2014
+@version 1.0
+*/
+
 //#include <time.h>
 #include <iostream>
 #include <string>
@@ -12,17 +19,6 @@ using namespace std;
 #include <windows.h> //Pour la fonction CharToOem ->Propriétédu projet "Jeu de caractères" doit être à "Non défini"
 
 #include "Mastermind.h"
-
-string accents(const string &pString){
-
-    assert(pString.length()<=1024);
-    char source[1024]; //Propriétés du projet "Characters set" doit être à "Not set" -> pas de caractère UNICODE)
-    strcpy_s(source, 1024, pString.c_str());
-    char destination[sizeof(source)];
-    CharToOem(source, destination);
-    return destination;
-}
-
 
 void main(int argc, _TCHAR* argv[])
 {
