@@ -126,7 +126,7 @@ string ConsoleMenu::choixDesCouleurs()
 	return choix;
 }
 
-void ConsoleMenu::obtentionCombinaisonCouleurRéférence()
+void ConsoleMenu::obtentionCombinaisonCouleurReference()
 {
 	//Obtention de la combinaison de couleur de référence
 	ArrayI<Color>* tabCouleursRef = mastermind.GetElement();

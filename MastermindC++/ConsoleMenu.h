@@ -18,7 +18,7 @@ public:
 	void displayCredits();
 	string choixDesCouleurs();
 	string accents(const string &pString);
-	void obtentionCombinaisonCouleurRéférence();
+	void obtentionCombinaisonCouleurReference();
 	void lectureVerdicts();
 	void epurationListe();
 
