@@ -30,9 +30,6 @@ void main(int argc, _TCHAR* argv[])
             return;
         }
     }
-    
-	while (true){
-		ConsoleMenu Run();
-	}
-       
+		ConsoleMenu myConsoleMenu;
+		myConsoleMenu.Run();
 }
