@@ -110,6 +110,7 @@ void List<TYPE>::Erase(Iterator<TYPE>& _Iter)
 		first = NULL;
 		last = NULL;
 		nbElements = 0;
+		_Iter.SetCurrent(NULL);
 		return;
 	}
 	else if (cellToErase == first)
@@ -118,6 +119,7 @@ void List<TYPE>::Erase(Iterator<TYPE>& _Iter)
 		delete first;
 		first = newFirst;
 		first->Previous = NULL;
+		_Iter.Next();
 	}
 	else if (cellToErase == last)
 	{
@@ -125,11 +127,13 @@ void List<TYPE>::Erase(Iterator<TYPE>& _Iter)
 		delete last;
 		last = newLast;
 		last->Next = NULL;
+		_Iter.SetCurrent(NULL);
 	}
 	else
 	{
 		cellToErase->Previous->Next = cellToErase->Next;
 		cellToErase->Next->Previous = cellToErase->Previous;
+		_Iter.Next();
 		delete cellToErase;
 	}
 	nbElements--;

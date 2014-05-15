@@ -13,6 +13,7 @@ Constructeur de la classe ConsoleMenu.
 */
 ConsoleMenu::ConsoleMenu()
 {
+
 }
 
 /**
@@ -25,7 +26,7 @@ ConsoleMenu::~ConsoleMenu()
 /**
 Methode qui prend en charge la gestion des accents.
 */
-string accents(const string &pString){
+string ConsoleMenu::accents(const string &pString){
 
 	assert(pString.length() <= 1024);
 	char source[1024]; //Propriétés du projet "Characters set" doit être à "Not set" -> pas de caractère UNICODE)
@@ -135,18 +136,18 @@ string ConsoleMenu::choixDesCouleurs()
 		cout << "    8-Blanc" << endl;
 
 
-		cout << "Entrer la suite de chiffres, 0 pour sortir: ";
+		cout << "Entrer la suite de chiffres (ex. 1337), 0 pour sortir: ";
 		cin >> choix;
 		if (choix == "0")
 		{
 			break;
 		}
-		else
-		{
-			tabCouleurs[i].SetColor(atoi(choix.substr(0, 1).c_str()));
-		}
-
+		i++;
 	} while (choix.length() != 4 || tabCouleurs[0] > 8 || tabCouleurs[1] > 8 || tabCouleurs[2] > 8 || tabCouleurs[3] > 8);
+	for (int j = 0; j < 4; j++)
+	{
+		tabCouleurs[j].SetColor(atoi(choix.substr(j, 1).c_str()));
+	}
 	return choix;
 }
 
@@ -157,7 +158,7 @@ Methode qui va chercher la combinaison de couleurs de reference.
 void ConsoleMenu::obtentionCombinaisonCouleurReference()
 {
 	//Obtention de la combinaison de couleur de référence
-	ArrayI<Color>* tabCouleursRef = mastermind.GetElement();
+	tabCouleursRef = mastermind.GetElement();
 
 	cout << accents("--------Couleurs à deviner: ") << tabCouleurs[0] << " "
 		<< tabCouleurs[1] << " "
@@ -184,9 +185,6 @@ void ConsoleMenu::lectureVerdicts()
 	for (int i = 0; i < 4; i++){
 		do{
 			string entree;
-
-			//Couleur c=(*t)[0]; //Si la liste retourne un pointeur
-			Color c = (*tabCouleursRef)[i];
 
 			cout << endl << "Couleur " << i + 1 << " - " << (*tabCouleursRef)[i] << endl;
 			cout << "Choisir (1-Bonne couleur et emplacement 2-Bonne couleur mais mauvais emplacement 3-Mauvaise couleur): ";
