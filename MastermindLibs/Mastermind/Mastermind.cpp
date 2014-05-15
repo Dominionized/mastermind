@@ -26,12 +26,16 @@ Mastermind::Mastermind()
 			}
 		}
 	}
-   //Il faut créer ici les 4096 séquences de couleurs possibles. Bonne réflexion!
+	//Il faut créer ici les 4096 séquences de couleurs possibles. Bonne réflexion!
 }
 
 Mastermind::~Mastermind()
 {
 	delete list;
+	for (int i = 0; i < 4096; i++)
+	{
+		delete tabSequences[i];
+	}
 }
 
 int Mastermind::GetNbElements() const
@@ -41,8 +45,8 @@ int Mastermind::GetNbElements() const
 
 ArrayI<Color>* Mastermind::GetElement() const
 {
-    //Utiliser la classe RandomNumber pour ne pas offrir toujours le premier élément de la liste (les parties seraient toutes pareilles avec la même séquence cachée)
-    ArrayI<Color>* PourCompiler;
+	//Utiliser la classe RandomNumber pour ne pas offrir toujours le premier élément de la liste (les parties seraient toutes pareilles avec la même séquence cachée)
+	ArrayI<Color>* randomArray;
 	RandomNumber randomNumberator;
 	Iterator<ArrayI<Color>> monIterateur;
 
@@ -55,26 +59,85 @@ ArrayI<Color>* Mastermind::GetElement() const
 		monIterateur.Next();
 	}
 
-	PourCompiler = list->GetElement(monIterateur);
-    return PourCompiler;
+	randomArray = list->GetElement(monIterateur);
+	return randomArray;
 }
 
 short Mastermind::CleanList(Color* _tabColorRef, short* _tabVerdicts)
 {
+	short nbOfDeletions = 0;
+	Iterator<ArrayI<Color>> monIterateur;
+	monIterateur.SetCurrent(list->Begin());
+	bool hasColor = false;
 
-     /*switch(tabVerdicts[i]){
-                
-                case 1: //Bonne couleur, bonne place
+	for (int i = 0; i < 4; i++)
+	{
 
-                        //Si la séquence de couleurs traitée n'a pas la couleur à la bonne place, il faut la retirer de la liste.
+		switch (_tabVerdicts[i]){
 
-                case 2: //Bonne couleur, mauvaise place
+		case 1: //Bonne couleur, bonne place
+			monIterateur.SetCurrent(list->Begin());
 
-                        //Si la séquence de couleurs traitée n'a pas la couleur à un autre emplacement que celui de la couleur de référence,
-                        //il faut la retirer de la liste.
-           
-                case 3: //Mauvaise couleur
-                        //Si la séquence de couleurs traitée a la couleur, il faut la retirer de la liste.
-    };*/
-    return 1; //Pour Compiler
+			while (monIterateur.GetCurrent() != NULL)
+			{
+				if (monIterateur.GetCurrentElement()->GetElement(i) != _tabColorRef[i]) // Si la couleur de l'index i est différente...
+				{
+					//... on supprime la cellule
+					monIterateur.GetCurrent()->Previous->Next = monIterateur.GetCurrent()->Next;
+					monIterateur.GetCurrent()->Next->Previous = monIterateur.GetCurrent()->Previous;
+					nbOfDeletions++;
+				}
+				monIterateur.SetCurrent(monIterateur.GetCurrent()->Next);
+			}
+			//Si la séquence de couleurs traitée n'a pas la couleur à la bonne place, il faut la retirer de la liste.
+			break;
+		case 2: //Bonne couleur, mauvaise place
+			monIterateur.SetCurrent(list->Begin());
+
+
+			while (monIterateur.GetCurrent() != NULL)
+			{
+				for (int j = 0; j < 4; j++) // On parcoure
+				{
+					if (monIterateur.GetCurrentElement()->GetElement(j) == _tabColorRef[i] && j != i)
+					{
+						hasColor = true;
+						break;
+					}
+				}
+
+				if (!hasColor)
+				{
+					monIterateur.GetCurrent()->Previous->Next = monIterateur.GetCurrent()->Next;
+					monIterateur.GetCurrent()->Next->Previous = monIterateur.GetCurrent()->Previous;
+					nbOfDeletions++;
+				}
+				monIterateur.SetCurrent(monIterateur.GetCurrent()->Next);
+			}
+			break;
+			//Si la séquence de couleurs traitée n'a pas la couleur à un autre emplacement que celui de la couleur de référence,
+			//il faut la retirer de la liste.
+		case 3: //Mauvaise couleur
+			//Si la séquence de couleurs traitée a la couleur, il faut la retirer de la liste.
+			monIterateur.SetCurrent(list->Begin());
+
+			while (monIterateur.GetCurrent() != NULL)
+			{
+				for (int j = 0; j < 4; j++) // On parcoure
+				{
+					if (monIterateur.GetCurrentElement()->GetElement(j) == _tabColorRef[i])
+					{
+						monIterateur.GetCurrent()->Previous->Next = monIterateur.GetCurrent()->Next;
+						monIterateur.GetCurrent()->Next->Previous = monIterateur.GetCurrent()->Previous;
+						nbOfDeletions++;
+						break;
+					}
+				}
+				monIterateur.SetCurrent(monIterateur.GetCurrent()->Next);
+			}
+			break;
+		};
+
+	}
+	return nbOfDeletions; //Pour Compiler
 }

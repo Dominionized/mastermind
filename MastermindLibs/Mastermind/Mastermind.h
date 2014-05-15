@@ -12,7 +12,7 @@ public:
 
     int GetNbElements() const;
     ArrayI<Color>* GetElement() const;
-
+	
     //Épure la liste de séquences de couleurs en fonction de la séquence traitée et des 4 verdicts (valeurs 1 à 3) sur cette dernière.
     short CleanList(Color* _tabColorRef, short* _tabVerdicts);
 
