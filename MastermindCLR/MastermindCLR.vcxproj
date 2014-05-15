@@ -65,7 +65,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>..\MastermindLibs\Debug\Mastermind.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\MastermindLibs\Mastermind\Mastermind.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AssemblyDebug>true</AssemblyDebug>
       <TargetMachine>MachineX86</TargetMachine>
