@@ -32,6 +32,10 @@ Mastermind::Mastermind()
 Mastermind::~Mastermind()
 {
 	delete list;
+	for (int i = 0; i < 4096; i++)
+	{
+		delete tabSequences[i];
+	}
 }
 
 int Mastermind::GetNbElements() const
@@ -61,23 +65,42 @@ ArrayI<Color>* Mastermind::GetElement() const
 
 short Mastermind::CleanList(Color* _tabColorRef, short* _tabVerdicts)
 {
+	Iterator<ArrayI<Color>> monIterateur;
+	monIterateur.SetCurrent(list->Begin());
+	Cell<ArrayI<Color>>* ptrNewPosition;
+
 	for (int i = 0; i < 4; i++)
 	{
 	
      switch(_tabVerdicts[i]){
                 
                 case 1: //Bonne couleur, bonne place
-					for (int j = 0; j < GetNbElements(); j++)
+					monIterateur.SetCurrent(list->Begin());
+
+					while (monIterateur.GetCurrent() != NULL)
 					{
-						if (tabSequences[j]->GetElement(i) != _tabColorRef[i])
-						{
-							tabSequences[j]
-						}
+							if (monIterateur.GetCurrentElement()->GetElement(i) != _tabColorRef[i]) // Si la couleur est différente
+							{
+								monIterateur.GetCurrent()->Previous->Next = monIterateur.GetCurrent()->Next;
+								monIterateur.GetCurrent()->Next->Previous = monIterateur.GetCurrent()->Previous;
+							}
+						monIterateur.SetCurrent(monIterateur.GetCurrent()->Next);
 					}
                         //Si la séquence de couleurs traitée n'a pas la couleur à la bonne place, il faut la retirer de la liste.
 
                 case 2: //Bonne couleur, mauvaise place
+					monIterateur.SetCurrent(list->Begin());
 
+					while (monIterateur.GetCurrent() != NULL)
+					{
+						for (int j = 0; j < 4; j++)
+						{
+							if (monIterateur.GetCurrentElement[j] == _tabColorRef[i])
+							{
+								exit;
+							}
+						}
+					}
                         //Si la séquence de couleurs traitée n'a pas la couleur à un autre emplacement que celui de la couleur de référence,
                         //il faut la retirer de la liste.
            
