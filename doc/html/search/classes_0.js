@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['cell',['Cell',['../class_cell.html',1,'']]]
+  ['arrayi',['ArrayI',['../class_array_i.html',1,'']]],
+  ['arrayi_3c_20color_20_3e',['ArrayI&lt; Color &gt;',['../class_array_i.html',1,'']]]
 ];

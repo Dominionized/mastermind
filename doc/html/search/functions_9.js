@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['setcurrent',['SetCurrent',['../class_iterator.html#a8bcc1aae94eb49473ad441028f5f1964',1,'Iterator']]]
+  ['next',['Next',['../class_iterator.html#a057b130dd9d78594c920abbb6305670e',1,'Iterator']]]
 ];

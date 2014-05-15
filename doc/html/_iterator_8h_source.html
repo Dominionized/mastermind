@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>TP3-Mastermind: C:/Users/Dominique/Documents/GitHub/mastermind/MastermindLibs/List/Iterator.h Source File</title>
+<title>TP3 Prog - Partie 2: C:/Users/Dominique/Documents/GitHub/mastermind/MastermindLibs/List/Iterator.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,8 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">TP3-Mastermind
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">TP3 Prog - Partie 2
    </div>
   </td>
  </tr>
@@ -80,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="dir_8b346250dfce7a8ca0a024f348db06e1.html">Dominique</a></li><li class="navelem"><a class="el" href="dir_4a79ca49ff6820120341dc5162216425.html">Documents</a></li><li class="navelem"><a class="el" href="dir_7dc52cf60af0b619e33b13394f4c8972.html">GitHub</a></li><li class="navelem"><a class="el" href="dir_690924ff8c3113ac40877a039954861e.html">mastermind</a></li><li class="navelem"><a class="el" href="dir_e477074a45927d5643d614ea7f5c4507.html">MastermindLibs</a></li><li class="navelem"><a class="el" href="dir_f12cee8743a6ac03a4dede6ddaf1ec28.html">List</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_8ceffd4ee35c3518d4e8bdc7e638efe8.html">Users</a></li><li class="navelem"><a class="el" href="dir_8efbe4382df8ac8fc19ce5876fc638cd.html">Dominique</a></li><li class="navelem"><a class="el" href="dir_4ca2b86a5525995f94ca3f53846f8062.html">Documents</a></li><li class="navelem"><a class="el" href="dir_7c7d0f3c5eda4bb9cadf1152608227d9.html">GitHub</a></li><li class="navelem"><a class="el" href="dir_7ffb70d3acf33d6c3e9ded88739932a1.html">mastermind</a></li><li class="navelem"><a class="el" href="dir_cb25c1c104d937fa5d39428b4edf3c77.html">MastermindLibs</a></li><li class="navelem"><a class="el" href="dir_b82508bd82deeb92de60beb4f0b9cd4d.html">List</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -88,47 +87,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Iterator.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;Cell.h&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> TYPE&gt;</div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="class_iterator.html">    4</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_iterator.html">Iterator</a>{</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <a class="code" href="class_cell.html">Cell&lt;TYPE&gt;</a>* current;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="comment">//Constructeur</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="class_iterator.html#ad69dcbcb3db470ba9471f635567a0bfd">Iterator</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="comment">//Méthodes</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="comment">//Fait pointer l&#39;itérateur sur la prochaine Cellule de la liste</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_iterator.html#a057b130dd9d78594c920abbb6305670e">Next</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="comment">//Fait pointer l&#39;itérateur sur la  Cellule précédente de la liste</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_iterator.html#a055cd22b8bbec76edecf9d6ce4696777">Previous</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">//Retourne l&#39;élément sur lequel l&#39;itérateur pointe</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    TYPE* <a class="code" href="class_iterator.html#ae62f6e49f26ade13c919f55ad9f6701d">GetCurrentElement</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">//Retourne le pointeur sur la Cellule sur laquelle l&#39;itérateur pointe</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="class_cell.html">Cell&lt;TYPE&gt;</a>* <a class="code" href="class_iterator.html#a7ee376fe2d7dd30fbe52703b1c596d41">GetCurrent</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">//Modifie le pointeur sur la Cellule sur laquelle l&#39;itérateur pointe</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_iterator.html#a8bcc1aae94eb49473ad441028f5f1964">SetCurrent</a>(<a class="code" href="class_cell.html">Cell&lt;TYPE&gt;</a>* _cell);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;iterator.hpp&quot;</span></div>
+<a href="_iterator_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;#pragma once</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_cell_8h.html">Cell.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> TYPE&gt;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_iterator.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_iterator.html">Iterator</a>{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="class_cell.html">Cell&lt;TYPE&gt;</a>* current;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="comment">//Constructeur</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_iterator.html#ad69dcbcb3db470ba9471f635567a0bfd">Iterator</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">//Méthodes</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">//Fait pointer l&#39;itérateur sur la prochaine Cellule de la liste</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_iterator.html#a057b130dd9d78594c920abbb6305670e">Next</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">//Fait pointer l&#39;itérateur sur la  Cellule précédente de la liste</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_iterator.html#a055cd22b8bbec76edecf9d6ce4696777">Previous</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">//Retourne l&#39;élément sur lequel l&#39;itérateur pointe</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    TYPE* <a class="code" href="class_iterator.html#ae62f6e49f26ade13c919f55ad9f6701d">GetCurrentElement</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">//Retourne le pointeur sur la Cellule sur laquelle l&#39;itérateur pointe</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_cell.html">Cell&lt;TYPE&gt;</a>* <a class="code" href="class_iterator.html#a7ee376fe2d7dd30fbe52703b1c596d41">GetCurrent</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">//Modifie le pointeur sur la Cellule sur laquelle l&#39;itérateur pointe</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_iterator.html#a8bcc1aae94eb49473ad441028f5f1964">SetCurrent</a>(<a class="code" href="class_cell.html">Cell&lt;TYPE&gt;</a>* _cell);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_iterator_8hpp.html">iterator.hpp</a>&quot;</span></div>
 <div class="ttc" id="class_iterator_html_a055cd22b8bbec76edecf9d6ce4696777"><div class="ttname"><a href="class_iterator.html#a055cd22b8bbec76edecf9d6ce4696777">Iterator::Previous</a></div><div class="ttdeci">void Previous(void)</div><div class="ttdef"><b>Definition:</b> Iterator.hpp:32</div></div>
+<div class="ttc" id="_cell_8h_html"><div class="ttname"><a href="_cell_8h.html">Cell.h</a></div></div>
 <div class="ttc" id="class_iterator_html_a7ee376fe2d7dd30fbe52703b1c596d41"><div class="ttname"><a href="class_iterator.html#a7ee376fe2d7dd30fbe52703b1c596d41">Iterator::GetCurrent</a></div><div class="ttdeci">Cell&lt; TYPE &gt; * GetCurrent(void) const </div><div class="ttdef"><b>Definition:</b> Iterator.hpp:52</div></div>
 <div class="ttc" id="class_iterator_html_ae62f6e49f26ade13c919f55ad9f6701d"><div class="ttname"><a href="class_iterator.html#ae62f6e49f26ade13c919f55ad9f6701d">Iterator::GetCurrentElement</a></div><div class="ttdeci">TYPE * GetCurrentElement(void) const </div><div class="ttdef"><b>Definition:</b> Iterator.hpp:42</div></div>
-<div class="ttc" id="class_cell_html"><div class="ttname"><a href="class_cell.html">Cell</a></div><div class="ttdef"><b>Definition:</b> Cell.h:3</div></div>
-<div class="ttc" id="class_iterator_html"><div class="ttname"><a href="class_iterator.html">Iterator</a></div><div class="ttdef"><b>Definition:</b> Iterator.h:4</div></div>
+<div class="ttc" id="class_cell_html"><div class="ttname"><a href="class_cell.html">Cell</a></div><div class="ttdef"><b>Definition:</b> Cell.h:10</div></div>
+<div class="ttc" id="class_iterator_html"><div class="ttname"><a href="class_iterator.html">Iterator</a></div><div class="ttdef"><b>Definition:</b> Iterator.h:11</div></div>
+<div class="ttc" id="_iterator_8hpp_html"><div class="ttname"><a href="_iterator_8hpp.html">Iterator.hpp</a></div></div>
 <div class="ttc" id="class_iterator_html_a8bcc1aae94eb49473ad441028f5f1964"><div class="ttname"><a href="class_iterator.html#a8bcc1aae94eb49473ad441028f5f1964">Iterator::SetCurrent</a></div><div class="ttdeci">void SetCurrent(Cell&lt; TYPE &gt; *_cell)</div><div class="ttdef"><b>Definition:</b> Iterator.hpp:62</div></div>
 <div class="ttc" id="class_iterator_html_ad69dcbcb3db470ba9471f635567a0bfd"><div class="ttname"><a href="class_iterator.html#ad69dcbcb3db470ba9471f635567a0bfd">Iterator::Iterator</a></div><div class="ttdeci">Iterator(void)</div><div class="ttdef"><b>Definition:</b> Iterator.hpp:14</div></div>
 <div class="ttc" id="class_iterator_html_a057b130dd9d78594c920abbb6305670e"><div class="ttname"><a href="class_iterator.html#a057b130dd9d78594c920abbb6305670e">Iterator::Next</a></div><div class="ttdeci">void Next(void)</div><div class="ttdef"><b>Definition:</b> Iterator.hpp:23</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 30 2014 14:14:55 for TP3-Mastermind by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 15 2014 18:29:06 for TP3 Prog - Partie 2 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
