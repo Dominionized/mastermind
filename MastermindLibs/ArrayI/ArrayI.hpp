@@ -1,4 +1,10 @@
-#include <assert.h>
+/**	@file Array.hpp
+Fichier contenant les methodes de la classe Array.
+@author Olivier Therrien - Lefebvre
+@author Dominique Begin
+@date 15 mai 2014
+@version 1.0
+*/#include <assert.h>
 
 
 template <class TYPE>

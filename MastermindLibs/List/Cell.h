@@ -1,3 +1,10 @@
+/**	@file Cell.h
+Fichier contenant la déclaration des méthodes de la classe Cell.
+@author Olivier Therrien - Lefebvre
+@author Dominique Begin
+@date 15 mai 2014
+@version 1.0
+*/
 #pragma once
 template <class TYPE>
 class Cell

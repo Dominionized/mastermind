@@ -1,6 +1,15 @@
-#include "Mastermind.h"
+/** @file Mastermind.cpp
+Fichier contenant les methodes de la classe Mastermind.
 
+@author Dominique Begin
+@author Olivier Therrien-Lefebvre
+@date	15 mai 2014
 
+*/#include "Mastermind.h"
+
+/**
+Constructeur de Mastermind qui cree toute les combinaisons de couleurs.
+*/
 Mastermind::Mastermind()
 {
 	list = new List<ArrayI<Color>>;
@@ -26,9 +35,15 @@ Mastermind::Mastermind()
 			}
 		}
 	}
+<<<<<<< HEAD
 	//Il faut créer ici les 4096 séquences de couleurs possibles. Bonne réflexion!
+=======
+>>>>>>> origin/Documentation
 }
 
+/**
+Destructeur de la classe Mastermind.
+*/
 Mastermind::~Mastermind()
 {
 	delete list;
@@ -38,11 +53,20 @@ Mastermind::~Mastermind()
 	}
 }
 
+/**
+Methode qui va prendre le nombre d'elements.
+@return un int qui est le nombre d'elements dans la liste.
+*/
 int Mastermind::GetNbElements() const
 {
 	return list->GetNbElements();
 }
 
+/**
+Methode qui va chercher l'element dans la liste un élément au aléatoire.
+@see randomNumber.
+@return Un pointeur dans l'Array sur un element.
+*/
 ArrayI<Color>* Mastermind::GetElement() const
 {
 	//Utiliser la classe RandomNumber pour ne pas offrir toujours le premier élément de la liste (les parties seraient toutes pareilles avec la même séquence cachée)
@@ -63,6 +87,12 @@ ArrayI<Color>* Mastermind::GetElement() const
 	return randomArray;
 }
 
+/**
+Methode qui vide la liste des choix.
+@return Un short qui représente un verdict.
+@param un pointeur sur la couleur.
+@param un pointeur sur le verdict.
+*/
 short Mastermind::CleanList(Color* _tabColorRef, short* _tabVerdicts)
 {
 	short nbOfDeletions = 0;
@@ -101,8 +131,15 @@ short Mastermind::CleanList(Color* _tabColorRef, short* _tabVerdicts)
 				{
 					if (monIterateur.GetCurrentElement()->GetElement(j) == _tabColorRef[i] && j != i)
 					{
+<<<<<<< HEAD
 						hasColor = true;
 						break;
+=======
+						if (tabSequences[j]->GetElement(i) != _tabColorRef[i])
+						{
+							tabSequences[j];
+						}
+>>>>>>> origin/Documentation
 					}
 				}
 
