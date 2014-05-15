@@ -35,10 +35,6 @@ Mastermind::Mastermind()
 			}
 		}
 	}
-<<<<<<< HEAD
-	//Il faut créer ici les 4096 séquences de couleurs possibles. Bonne réflexion!
-=======
->>>>>>> origin/Documentation
 }
 
 /**
@@ -131,15 +127,8 @@ short Mastermind::CleanList(Color* _tabColorRef, short* _tabVerdicts)
 				{
 					if (monIterateur.GetCurrentElement()->GetElement(j) == _tabColorRef[i] && j != i)
 					{
-<<<<<<< HEAD
 						hasColor = true;
 						break;
-=======
-						if (tabSequences[j]->GetElement(i) != _tabColorRef[i])
-						{
-							tabSequences[j];
-						}
->>>>>>> origin/Documentation
 					}
 				}
 
