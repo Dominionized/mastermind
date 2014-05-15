@@ -79,9 +79,10 @@ short Mastermind::CleanList(Color* _tabColorRef, short* _tabVerdicts)
 
 					while (monIterateur.GetCurrent() != NULL)
 					{
-							if (monIterateur.GetCurrentElement()->GetElement(i) != _tabColorRef[i]) // Si la couleur est différente
+							if (monIterateur.GetCurrentElement()->GetElement(i) != _tabColorRef[i]) // Si la couleur de l'index i est différente...
 							{
-								monIterateur.GetCurrent()->Previous->Next = monIterateur.GetCurrent()->Next;
+								//... on supprime la cellule
+								monIterateur.GetCurrent()->Previous->Next = monIterateur.GetCurrent()->Next; 
 								monIterateur.GetCurrent()->Next->Previous = monIterateur.GetCurrent()->Previous;
 							}
 						monIterateur.SetCurrent(monIterateur.GetCurrent()->Next);
@@ -91,16 +92,27 @@ short Mastermind::CleanList(Color* _tabColorRef, short* _tabVerdicts)
                 case 2: //Bonne couleur, mauvaise place
 					monIterateur.SetCurrent(list->Begin());
 
+					bool hasColor = false;
+
 					while (monIterateur.GetCurrent() != NULL)
 					{
-						for (int j = 0; j < 4; j++)
+						for (int j = 0; j < 4; j++) // On parcoure
 						{
-							if (monIterateur.GetCurrentElement[j] == _tabColorRef[i])
+							if (monIterateur.GetCurrentElement[j] == _tabColorRef[i] && j != i)
 							{
-								exit;
+								hasColor = true;
+								break;
 							}
 						}
+
+						if (!hasColor)
+						{
+							monIterateur.GetCurrent()->Previous->Next = monIterateur.GetCurrent()->Next;
+							monIterateur.GetCurrent()->Next->Previous = monIterateur.GetCurrent()->Previous;
+						}
+						monIterateur.SetCurrent(monIterateur.GetCurrent()->Next);
 					}
+					
                         //Si la séquence de couleurs traitée n'a pas la couleur à un autre emplacement que celui de la couleur de référence,
                         //il faut la retirer de la liste.
            
